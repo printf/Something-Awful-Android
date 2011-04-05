@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.htmlcleaner.TagNode;
-import org.htmlcleaner.XPatherException;
 
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.network.NetworkUtils;
@@ -206,18 +205,22 @@ public class AwfulForum extends AwfulSubforum implements Parcelable {
         aDestination.writeInt(getLastPage());
     }
 
+	@Override
 	public String getTitle() {
 		return mTitle;
 	}
 
+	@Override
 	public void setTitle(String aTitle) {
 		mTitle = aTitle;
 	}
 
+	@Override
 	public String getForumId() {
 		return mForumId;
 	}
 
+	@Override
 	public void setForumId(String aForumId) {
 		mForumId = aForumId;
 	}

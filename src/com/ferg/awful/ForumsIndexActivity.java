@@ -158,12 +158,14 @@ public class ForumsIndexActivity extends Activity {
     };
 
     private class LoadForumsTask extends AsyncTask<Void, Void, ArrayList<AwfulForum>> {
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ForumsIndexActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public ArrayList<AwfulForum> doInBackground(Void... aParams) {
+        @Override
+		public ArrayList<AwfulForum> doInBackground(Void... aParams) {
             ArrayList<AwfulForum> result = new ArrayList<AwfulForum>();
             if (!isCancelled()) {
                 try {
@@ -176,7 +178,8 @@ public class ForumsIndexActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(ArrayList<AwfulForum> aResult) {
+        @Override
+		public void onPostExecute(ArrayList<AwfulForum> aResult) {
             if (!isCancelled()) {
                 mForumList.setAdapter(new AwfulForumAdapter(ForumsIndexActivity.this, aResult));
 
@@ -212,7 +215,6 @@ public class ForumsIndexActivity extends Activity {
             mForums       = aForums;
         }
 
-        @Override
         public View getChildView(int aGroupPosition, int aChildPosition, boolean isLastChild, 
                 View aConvertView, ViewGroup aParent) 
         {
@@ -230,7 +232,6 @@ public class ForumsIndexActivity extends Activity {
             return inflatedView;
         }
 
-        @Override
         public View getGroupView(int aGroupPosition, boolean isExpanded, View aConvertView, ViewGroup aParent) {
             View inflatedView = aConvertView;
 

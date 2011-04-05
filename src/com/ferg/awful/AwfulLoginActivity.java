@@ -76,7 +76,6 @@ public class AwfulLoginActivity extends Activity {
         
         final ImageView image = (ImageView) findViewById(R.id.dealwithit); 
         image.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				((AnimationDrawable) image.getDrawable()).start();
 			}
@@ -134,12 +133,14 @@ public class AwfulLoginActivity extends Activity {
     };
     
     private class LoginTask extends AsyncTask<String, Void, Boolean> {
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(AwfulLoginActivity.this, "Logging In", 
                 "Hold on...", true);
         }
 
-        public Boolean doInBackground(String... aParams) {
+        @Override
+		public Boolean doInBackground(String... aParams) {
         	boolean result = false;
         	
             if (!isCancelled()) {
@@ -160,7 +161,8 @@ public class AwfulLoginActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(Boolean aResult) {
+        @Override
+		public void onPostExecute(Boolean aResult) {
             if (!isCancelled()) {
                 boolean succeeded = aResult;
 

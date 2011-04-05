@@ -27,10 +27,9 @@
 
 package com.ferg.awful.thread;
 
-import android.util.Log;
-
 import org.htmlcleaner.TagNode;
-import org.htmlcleaner.XPatherException;
+
+import android.util.Log;
 
 import com.ferg.awful.constants.Constants;
 

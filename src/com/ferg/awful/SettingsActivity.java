@@ -71,7 +71,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	}
 	
 	private OnPreferenceClickListener onAboutListener = new OnPreferenceClickListener() {
-		@Override
 		public boolean onPreferenceClick(Preference preference) {
 			showDialog(DIALOG_ABOUT);
 			return true;
@@ -83,7 +82,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		"default_post_font_size" 
 		};
 	
-	@Override
 	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
 		for(String valueSummaryKey : VALUE_SUMMARY_KEYS_INT) {
 			if(valueSummaryKey.equals(key)) {

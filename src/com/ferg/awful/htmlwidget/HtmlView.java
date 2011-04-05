@@ -36,6 +36,7 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.Spannable;
+import android.text.Spanned;
 import android.text.style.CharacterStyle;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
@@ -382,9 +383,9 @@ public final class HtmlView extends TextView {
         output.append("\uFFFC");
         int end = output.length();
         output.setSpan(new ImageSpan(drawable, src), start, end,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         if (intents != null) {
-            output.setSpan(new IntentsSpan(intents), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            output.setSpan(new IntentsSpan(intents), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         if (frame != null && snapshotUrl != null) {
             int layerId = android.R.id.background;
@@ -413,11 +414,11 @@ public final class HtmlView extends TextView {
         if (bitmap != null) {
             Drawable drawable = createBitmapDrawable(bitmap);
             HtmlImageSpan span = new HtmlImageSpan(drawable, src, title, alt);
-            output.setSpan(span, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            output.setSpan(span, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         } else {
             Drawable placeholder = getPlaceholderDrawable();
             HtmlImageSpan span = new HtmlImageSpan(placeholder, src, title, alt);
-            output.setSpan(span, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            output.setSpan(span, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (src != null) {
                 ImageTask task = new ImageTask(src, span);
                 executeImageTask(task);
@@ -674,7 +675,7 @@ public final class HtmlView extends TextView {
                         String alt = mSpan.getAlt();
                         String title = mSpan.getTitle();
                         HtmlImageSpan span = new HtmlImageSpan(d, src, title, alt);
-                        editableText.setSpan(span, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        editableText.setSpan(span, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                 }
             }

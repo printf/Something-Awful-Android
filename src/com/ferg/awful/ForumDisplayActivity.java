@@ -231,12 +231,14 @@ public class ForumDisplayActivity extends Activity {
 			mPage = aPage;
 		}
 
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ForumDisplayActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public ArrayList<AwfulThread> doInBackground(String... aParams) {
+        @Override
+		public ArrayList<AwfulThread> doInBackground(String... aParams) {
             ArrayList<AwfulThread> result = new ArrayList<AwfulThread>();
 
             if (!isCancelled()) {
@@ -269,7 +271,8 @@ public class ForumDisplayActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(ArrayList<AwfulThread> aResult) {
+        @Override
+		public void onPostExecute(ArrayList<AwfulThread> aResult) {
             if (!isCancelled()) {
             	//TODO: We need to set the forum title
             	

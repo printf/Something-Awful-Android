@@ -1,13 +1,14 @@
 package com.ferg.awful.user;
 
+import android.util.Log;
+
+import java.util.HashMap;
+
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.SimpleHtmlSerializer;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
-import android.util.Log;
-
-import java.util.HashMap;
 
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.network.NetworkUtils;

@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.htmlcleaner.TagNode;
-import org.htmlcleaner.XPatherException;
 
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.network.NetworkUtils;
@@ -78,7 +77,7 @@ public class AwfulThread extends AwfulPagedItem implements Parcelable {
         mUnreadCount = aAwfulThread.readInt();
     }
 
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+    public static final Parcelable.Creator<AwfulThread> CREATOR = new Parcelable.Creator<AwfulThread>() {
         public AwfulThread createFromParcel(Parcel aAwfulThread) {
             return new AwfulThread(aAwfulThread);
         }
@@ -88,12 +87,12 @@ public class AwfulThread extends AwfulPagedItem implements Parcelable {
         }
     };
 
-    @Override
+    
     public int describeContents() {
         return 0;
     }
 
-    @Override
+    
     public void writeToParcel(Parcel aDestination, int aFlags) {
         aDestination.writeString(mThreadId);
         aDestination.writeString(mTitle);

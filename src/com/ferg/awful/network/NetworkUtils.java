@@ -234,7 +234,7 @@ public class NetworkUtils {
                     @SuppressWarnings("unchecked")
                         Map.Entry<String, String> param = (Map.Entry<String, String>) iter.next();
 
-                    result.append(param.getKey() + "=" + URLEncoder.encode((String) param.getValue(), "UTF-8"));
+                    result.append(param.getKey() + "=" + URLEncoder.encode(param.getValue(), "UTF-8"));
 
                     if (iter.hasNext()) {
                         result.append("&");

@@ -14,10 +14,11 @@
 
 package com.ferg.awful.thumbnail;
 
+import com.commonsware.cwac.bus.AbstractBus;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
-import com.commonsware.cwac.bus.AbstractBus;
 
 public class ThumbnailBus
 	extends AbstractBus<ThumbnailMessage, String, ThumbnailBus.MatchStrategy> {

@@ -18,7 +18,6 @@ import com.ferg.awful.constants.Constants;
 import com.ferg.awful.thread.AwfulSubforum;
 import com.ferg.awful.thread.AwfulForum;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AwfulProvider extends ContentProvider {

@@ -32,7 +32,6 @@ import android.util.Log;
 import java.util.HashMap;
 
 import org.htmlcleaner.TagNode;
-import org.htmlcleaner.XPatherException;
 
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.network.NetworkUtils;

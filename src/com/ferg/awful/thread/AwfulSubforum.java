@@ -102,12 +102,12 @@ public class AwfulSubforum extends AwfulPagedItem implements Parcelable {
         return result;
     }
 
-    @Override
+    
     public int describeContents() {
         return 0;
     }
 
-    @Override
+    
     public void writeToParcel(Parcel aDestination, int aFlags) {
         aDestination.writeString(mTitle);
         aDestination.writeString(mForumId);

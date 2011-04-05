@@ -169,12 +169,14 @@ public class PostReplyActivity extends Activity {
             mEditing = aEditing;
         }
 
+		@Override
 		public void onPreExecute() {
             mDialog = ProgressDialog.show(PostReplyActivity.this, "Posting", 
                 "Hopefully it didn't suck...", true);
         }
 
-        public Void doInBackground(String... aParams) {
+        @Override
+		public Void doInBackground(String... aParams) {
             if (!isCancelled()) {
                 try {
                     if (mEditing) {
@@ -191,7 +193,8 @@ public class PostReplyActivity extends Activity {
             return null;
         }
 
-        public void onPostExecute(Void aResult) {
+        @Override
+		public void onPostExecute(Void aResult) {
             if (!isCancelled()) {
                 mDialog.dismiss();
 
@@ -202,7 +205,8 @@ public class PostReplyActivity extends Activity {
     }
 
     private class FetchFormKeyTask extends AsyncTask<String, Void, String> {
-        public String doInBackground(String... aParams) {
+        @Override
+		public String doInBackground(String... aParams) {
             String result = null;
 
             if (!isCancelled()) {
@@ -217,7 +221,8 @@ public class PostReplyActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(String aResult) {
+        @Override
+		public void onPostExecute(String aResult) {
             if (!isCancelled()) {
                 if (aResult.length() > 0) {
                     Log.i(TAG, aResult);

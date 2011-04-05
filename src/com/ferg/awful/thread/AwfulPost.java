@@ -28,11 +28,13 @@
 package com.ferg.awful.thread;
 
 import java.util.ArrayList;
+
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.SimpleHtmlSerializer;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
+
 import android.util.Log;
 
 import com.ferg.awful.constants.Constants;

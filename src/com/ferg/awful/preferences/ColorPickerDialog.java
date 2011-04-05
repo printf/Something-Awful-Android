@@ -86,7 +86,7 @@ public class ColorPickerDialog
 
 	}
 
-	@Override
+	
 	public void onColorChanged(int color) {
 
 		mNewColor.setColor(color);
@@ -116,7 +116,7 @@ public class ColorPickerDialog
 		return mColorPicker.getColor();
 	}
 
-	@Override
+	
 	public void onClick(View v) {
 		switch(v.getId()) {
 			case R.id.old_color_panel:

@@ -29,6 +29,8 @@ package com.ferg.awful;
 
 import java.util.ArrayList;
 
+import org.htmlcleaner.TagNode;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -51,8 +53,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.htmlcleaner.TagNode;
 
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.network.NetworkUtils;
@@ -205,12 +205,14 @@ public class UserCPActivity extends Activity {
             mPage = aPage;
         }
 
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(UserCPActivity.this, "Loading", 
                     "Hold on...", true);
         }
 
-        public ArrayList<AwfulThread> doInBackground(String... aParams) {
+        @Override
+		public ArrayList<AwfulThread> doInBackground(String... aParams) {
             ArrayList<AwfulThread> result = new ArrayList<AwfulThread>();
 
             if (!isCancelled()) {
@@ -229,7 +231,8 @@ public class UserCPActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(ArrayList<AwfulThread> aResult) {
+        @Override
+		public void onPostExecute(ArrayList<AwfulThread> aResult) {
             if (!isCancelled()) {
                 mThreads = aResult;
 

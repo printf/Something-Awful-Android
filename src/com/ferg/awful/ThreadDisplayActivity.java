@@ -174,7 +174,6 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
         });
     }
     
-    @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
     	if("default_post_font_size".equals(key)) {
     		int newSize = prefs.getInt(key, 15);
@@ -443,12 +442,14 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 	};
 
     private class MarkLastReadTask extends AsyncTask<Long, Void, ArrayList<AwfulPost>> {
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ThreadDisplayActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public ArrayList<AwfulPost> doInBackground(Long... aParams) {
+        @Override
+		public ArrayList<AwfulPost> doInBackground(Long... aParams) {
             ArrayList<AwfulPost> result = new ArrayList<AwfulPost>();
 
             if (!isCancelled()) {
@@ -466,7 +467,8 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
             return result;
         }
 
-        public void onPostExecute(ArrayList<AwfulPost> aResult) {
+        @Override
+		public void onPostExecute(ArrayList<AwfulPost> aResult) {
             if (!isCancelled()) {
                 mDialog.dismiss();
 
@@ -478,12 +480,14 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
     private class ParseEditPostTask extends AsyncTask<Long, Void, String> {
         private String mPostId;
 
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ThreadDisplayActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public String doInBackground(Long... aParams) {
+        @Override
+		public String doInBackground(Long... aParams) {
             String result = null;
 
             if (!isCancelled()) {
@@ -502,7 +506,8 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
             return result;
         }
 
-        public void onPostExecute(String aResult) {
+        @Override
+		public void onPostExecute(String aResult) {
             if (!isCancelled()) {
                 mDialog.dismiss();
 
@@ -518,12 +523,14 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
     }
 
     private class ParsePostQuoteTask extends AsyncTask<Long, Void, String> {
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ThreadDisplayActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public String doInBackground(Long... aParams) {
+        @Override
+		public String doInBackground(Long... aParams) {
             String result = null;
 
             if (!isCancelled()) {
@@ -540,7 +547,8 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
             return result;
         }
 
-        public void onPostExecute(String aResult) {
+        @Override
+		public void onPostExecute(String aResult) {
             if (!isCancelled()) {
                 mDialog.dismiss();
 
@@ -567,12 +575,14 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 			mPage = aPage;
 		}
 
-        public void onPreExecute() {
+        @Override
+		public void onPreExecute() {
             mDialog = ProgressDialog.show(ThreadDisplayActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public AwfulThread doInBackground(AwfulThread... aParams) {
+        @Override
+		public AwfulThread doInBackground(AwfulThread... aParams) {
             if (!isCancelled()) {
                 try {
                     if (mPage == 0) {
@@ -595,7 +605,8 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
             return aParams[0];
         }
 
-        public void onPostExecute(AwfulThread aResult) {
+        @Override
+		public void onPostExecute(AwfulThread aResult) {
             if (!isCancelled()) {
                 mThread = aResult;
                 setListAdapter();
@@ -644,17 +655,16 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
     		mBaseAdapter = base;
     	}
 
-		@Override
+		
 		public int getPositionForSection(int section) {
 			return section;
 		}
 
-		@Override
 		public int getSectionForPosition(int position) {
 			return position;
 		}
 
-		@Override
+		
 		public Object[] getSections() {
 			int count = mBaseAdapter.getCount();
 			String[] sections = new String[count];
@@ -694,7 +704,6 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 	        	profileAction.setTitle("Profile"); // TODO externalize
 	        	profileAction.setIcon(getResources().getDrawable(R.drawable.ic_menu_usercp));
 	        	profileAction.setOnClickListener(new OnClickListener() {
-					@Override
 					public void onClick(View v) {
                         Intent profile = new Intent().setClass(ThreadDisplayActivity.this, ProfileActivity.class);
                         profile.putExtra(Constants.PARAM_USER_ID, userid);
@@ -710,7 +719,6 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 	        	messageAction.setTitle("Message"); // TODO externalize
 	        	messageAction.setIcon(getResources().getDrawable(R.drawable.ic_menu_send));
 	        	messageAction.setOnClickListener(new OnClickListener() {
-	        		@Override
 	        		public void onClick(View v) {
 	        			HashMap<String, String> params = new HashMap<String, String>();
 						params.put(Constants.PARAM_ACTION, Constants.ACTION_NEW_MESSAGE);
@@ -726,7 +734,6 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 	        	postHistoryAction.setTitle("Post History"); // TODO externalize
 	        	postHistoryAction.setIcon(getResources().getDrawable(R.drawable.ic_menu_archive));
 	        	postHistoryAction.setOnClickListener(new OnClickListener() {
-	        		@Override
 	        		public void onClick(View v) {
 	        			HashMap<String, String> params = new HashMap<String, String>();
 						params.put(Constants.PARAM_ACTION, Constants.ACTION_SEARCH_POST_HISTORY);
@@ -742,7 +749,6 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
 	        	rapSheetAction.setTitle("Rap Sheet"); // TODO externalize
 	        	rapSheetAction.setIcon(getResources().getDrawable(R.drawable.ic_menu_clear_playlist));
 	        	rapSheetAction.setOnClickListener(new OnClickListener() {
-	        		@Override
 	        		public void onClick(View v) {
 	        			HashMap<String, String> params = new HashMap<String, String>();
 						params.put(Constants.PARAM_USER_ID, userid);
@@ -813,7 +819,7 @@ public class ThreadDisplayActivity extends Activity implements OnSharedPreferenc
             // Set up header quickactions
             final ViewHolder vh = viewHolder;
             OnClickListener listener = new OnClickListener() {
-				@Override
+				
 				public void onClick(View v) {
 					if(v == vh.postHead) {
 						// showAvatarQuickAction(vh.avatar, current, aPosition);

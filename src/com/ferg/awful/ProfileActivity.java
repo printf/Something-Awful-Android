@@ -27,19 +27,13 @@
 
 package com.ferg.awful;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.webkit.WebView;
 
-import com.ferg.awful.async.DrawableManager;
 import com.ferg.awful.constants.Constants;
 import com.ferg.awful.user.Profile;
 
@@ -108,12 +102,14 @@ public class ProfileActivity extends Activity {
     }
 
 	private class FetchProfileTask extends AsyncTask<String, Void, Profile> {
+		@Override
 		public void onPreExecute() {
             mDialog = ProgressDialog.show(ProfileActivity.this, "Loading", 
                 "Hold on...", true);
         }
 
-        public Profile doInBackground(String... aParams) {
+        @Override
+		public Profile doInBackground(String... aParams) {
             Profile result = null;
 
             if (!isCancelled()) {
@@ -123,7 +119,8 @@ public class ProfileActivity extends Activity {
             return result;
         }
 
-        public void onPostExecute(Profile aResult) {
+        @Override
+		public void onPostExecute(Profile aResult) {
             if (!isCancelled()) {
                 mDialog.dismiss();
 
